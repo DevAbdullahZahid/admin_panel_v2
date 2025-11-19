@@ -1,6 +1,12 @@
-// src/utils/apiService.ts - FINAL PRODUCTION VERSION
+// src/utils/apiService.ts - FINAL PRODUCTION VERSIon
+// Access the variable using the REACT_APP_ prefix
+const API_BASE_URL: string = process.env.REACT_APP_API_BASE_URL || '';
 
-const API_BASE_URL = 'https://dev-api-iprep.rezotera.com/api/v1';
+if (!API_BASE_URL) {
+  console.error("API Base URL is not defined in the environment variables.");
+  // Or throw an error to prevent the app from running without the required config
+  // throw new Error("Missing API Base URL");
+}
 
 const getToken = (): string | null => {
     return localStorage.getItem('authToken');
